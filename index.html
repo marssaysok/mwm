@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars-Ware</title>
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1225291836898148364/1226978466109460520/9712-pouty-kuromi.png?ex=6626bbbe&is=661446be&hm=4907174ab65afac53c56a13c1f7bff833127e6a738097a369e3a8dabfe38e974&" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Izmir+Narrow:wght@700&family=Izmir+Narrow&display=swap">
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .logo-container {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 999;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            cursor: pointer;
+        }
+        .logo-container img {
+            width: 80px;
+            height: auto;
+            display: block;
+        }
+
+        .button {
+            position: absolute;
+            top: 35px;
+            left: 120px;
+            color: rgb(220, 218, 218);
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            z-index: 999;
+            outline: none;
+            background: none;
+            font-size: 23px;
+            font-family: 'Izmir Narrow Bold Italic', sans-serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .button:hover {
+            color: #b3afaf;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .center-image {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            width: 200px;
+            height: auto;
+        }
+
+        .center-image.fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .center-image.fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .center-text {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            font-size: 28px;
+            font-family: 'Martian Mono', monospace;
+            color: rgb(190, 189, 189);
+            opacity: 1;
+        }
+
+        .center-text.fade-out {
+            animation: fadeOutText 0.5s ease forwards;
+        }
+
+        @keyframes fadeOutText {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .second-text {
+            position: fixed;
+            top: 46%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            font-size: 28px;
+            font-family: 'Martian Mono', monospace;
+            color: rgb(190, 189, 189);
+            opacity: 1;
+        }
+
+        .second-text.fade-out {
+            animation: fadeOutSecondText 0.5s ease forwards;
+        }
+
+        @keyframes fadeOutSecondText {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
+        .button-container {
+            position: fixed;
+            top: 85%;
+            left: 27%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .button-container.fade-in {
+            opacity: 1;
+        }
+
+        .button-container.fade-out {
+            opacity: 0;
+        }
+
+        .download, .documentation {
+            border: 2px solid white;
+            margin-right: 10px;
+            background: none;
+            padding: 5px 10px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .additional-image {
+            position: fixed;
+            top: 46%;
+            width: 100px;
+            height: auto;
+            z-index: 1000;
+            opacity: 1;
+            animation: popInOut 2s infinite;
+        }
+
+        @keyframes popInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .left-image {
+            top: 30%;
+            left: 8%;
+            width: 300px;
+        }
+
+        .right-image {
+            top: 30%;
+            right: 6%;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container" onclick="hideImageAndShowText()">
+        <img id="logo" src="https://i.pinimg.com/originals/12/74/80/127480212253570cd556f904c0787209.png" alt="Logo">
+    </div>
+    <button class="button" onclick="displayImage()">Mars-Ware M</button>
+    <button class="button" style="left: 320px;" onclick="goBack()">FAQ</button>
+
+    <div class="center-image" id="image-container">
+        <img id="displayed-image" src="" alt="Displayed Image">
+    </div>
+
+    <div class="center-text">
+        Mars-Ware M
+    </div>
+
+    <div class="second-text">
+        Mars-Ware M is a cutting-edge Roblox executor designed for macOS, enabling users to seamlessly execute scripts within the Roblox platform. With its intuitive and interactive user interface, Mars-Ware M offers essential features such as script injection and execution, along with a comprehensive script hub, providing users with an easy-to-access script searching experience.
+    </div>
+
+    <img class="additional-image left-image" src="https://cdn.discordapp.com/attachments/1225291836898148364/1227040669562830949/hkitty.png?ex=6626f5ac&is=661480ac&hm=38d62d78f44cd33b725d922d4f53a6df04a33dcc95af7e93c40b7b63d065e8c9&" alt="Left Image">
+    <img class="additional-image right-image" src="https://cdn.discordapp.com/attachments/1225291836898148364/1227040596598722580/2867-meloface.png?ex=6626f59b&is=6614809b&hm=9e6080ac83c3bb086f2d76d7d95fce5dc32455b8916c7e8a42be3bfaf0ed79d2&" alt="Right Image">
+
+    <div class="button-container" id="button-container">
+        <button class="button download" onclick="downloadFile()">Download</button>
+        <button class="button documentation" style="left: 550px;" onclick="exampleFunction()">Documentation</button>
+    </div>
+    
+    <script>
+        function displayImage() {
+            var imageContainer = document.getElementById("image-container");
+            var displayedImage = document.getElementById("displayed-image");
+            var centerText = document.querySelector(".center-text");
+            var secondText = document.querySelector(".second-text");
+            var buttonContainer = document.getElementById("button-container");
+
+            displayedImage.src = "https://cdn.discordapp.com/attachments/1225291836898148364/1227004643855302697/Screen_Shot_2024-04-08_at_2.18.17_PM.png?ex=6626d41f&is=66145f1f&hm=41a4bb75227a07ffef4ac7ad7307f16ab1febad71cc49ab5ddf4f638d1f39c6d&";
+            displayedImage.style.width = "600px";
+            displayedImage.style.height = "auto";
+
+            imageContainer.classList.add("fade-in");
+            imageContainer.style.display = "block";
+
+            centerText.classList.add("fade-out");
+
+            secondText.classList.add("fade-out");
+
+            buttonContainer.style.display = "block";
+            buttonContainer.classList.remove("fade-out");
+            buttonContainer.classList.add("fade-in");
+        }
+
+        function hideImageAndShowText() {
+            var imageContainer = document.getElementById("image-container");
+            var centerText = document.querySelector(".center-text");
+            var secondText = document.querySelector(".second-text");
+            var buttonContainer = document.getElementById("button-container");
+
+            imageContainer.classList.remove("fade-in");
+            imageContainer.classList.add("fade-out");
+
+            centerText.classList.remove("fade-out");
+            centerText.classList.add("fade-in");
+
+            secondText.classList.remove("fade-out");
+            secondText.classList.add("fade-in");
+
+            buttonContainer.classList.remove("fade-in");
+            buttonContainer.classList.add("fade-out");
+
+            setTimeout(function() {
+                imageContainer.style.display = "none";
+                imageContainer.classList.remove("fade-out");
+            }, 500);
+        }
+
+        function goBack() {
+            window.location.href = "https://marssaysok.github.io/faq/";
+        }
+
+        function exampleFunction() {
+            alert("Docs will be added soon!");
+        }
+
+        function downloadFile() {
+            var url = "https://cdn.discordapp.com/attachments/1225291836898148364/1227045295485882439/Mars-Ware.txt?ex=6626f9fb&is=661484fb&hm=1b112cad599b8d6689c750deda15a7adf6161af9ac671a0b5b2481adf2b89bff&";
+            var fileName = "Mars-Ware.txt";
+            var link = document.createElement("a");
+            link.href = url;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
